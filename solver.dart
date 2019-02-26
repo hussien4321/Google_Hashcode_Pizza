@@ -99,8 +99,8 @@ class Solver {
   }
 
   _checkIfValidToppingsAndUpdate(List<Coord> slicesForThisHeight) {
-    if(pizza.isValidToppingSlice(getCurrentCoords)){
-      // print("adding slice to data!");
+    if(pizza.isValidToppingSlice(getCurrentCoords) && pizza.isValidSizeSlice(getCurrentCoords)){
+      // print("adding $getCurrentCoords to data!");
       slicesForThisHeight.add(getCurrentCoords);
       currentX = currentX + currentWidth;
     }
