@@ -44,18 +44,18 @@ class Solver {
       // print("Current Height is $currentHeight, w/x,y ($currentX,$currentY) current score at this height is $currentScoreAtThisHeight");
 
       if(currentScoreAtThisHeight < tempScore){
-        // print("found a good solution at height $currentHeight");
-        currentNumberOfSolvedRows = currentY + currentWidth - 1;
+        currentNumberOfSolvedRows = currentY + currentHeight - 1;
         currentY = currentNumberOfSolvedRows;
         break;
       }
       tempScore = currentScoreAtThisHeight;
       biggestSlicesPerRow =  currentSlicesAtThisHeight;
       currentHeight++;
-      currentNumberOfSolvedRows = currentY + currentWidth;
-      currentY =currentNumberOfSolvedRows;
+      currentNumberOfSolvedRows = currentY + currentHeight;
     }
+    currentY =currentNumberOfSolvedRows;
 
+    // print("found a good solution at height $currentHeight with score $tempScore $biggestSlicesPerRow");
     slicesFound.addAll(biggestSlicesPerRow);
 
 

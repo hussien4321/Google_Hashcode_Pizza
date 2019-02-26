@@ -29,7 +29,7 @@ writeResultToFile(String filename, List<Coord> results) async {
 
 main() async {
   List<String> filenames = ["a_example", "b_small", "c_medium", "d_big"];
-  // print('hello hash code 2019!');
+  print('hello hash code 2019!');
   for(String filename in filenames){
     List<String> data = await importFile("./inputs/$filename.in");
     Pizza pizza = new Pizza(data);

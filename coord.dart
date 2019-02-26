@@ -6,5 +6,5 @@ class Coord {
   get size => (right-left+1) * (bottom-top+1);
 
   @override
-  String toString() => "$left $top $right $bottom";
+  String toString() => "$top $left $bottom $right";
 }  
