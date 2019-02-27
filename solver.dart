@@ -90,13 +90,23 @@ class Solver {
   }
 
   bool _attemptToExpandToTheRight() {
+    if(_currentSliceIsValidAndNextSliceIsValid){
+      return false;
+    }
     currentWidth++;
-    if(!pizza.isValidSizeSlice(getCurrentCoords) || !pizza.isValidSlice(getCurrentCoords)){
+    if(_sliceIsTooBig(getCurrentCoords)){
       currentWidth--;
       return false;
     }
     return true;
   }
+
+  bool get _currentSliceIsValidAndNextSliceIsValid => pizza.isValidToppingSlice(getCurrentCoords) && !_sliceIsTooBig(getAdjacentSliceCoords) && pizza.isValidToppingSlice(getAdjacentSliceCoords);
+
+  Coord get getAdjacentSliceCoords => Coord(left: currentX+currentWidth, right: currentX+currentWidth, top: currentY, bottom: currentY + currentHeight-1);
+
+
+  bool _sliceIsTooBig(Coord coords) => !pizza.isValidSizeSlice(coords) || !pizza.isValidSlice(coords);
 
   _checkIfValidToppingsAndUpdate(List<Coord> slicesForThisHeight) {
     if(pizza.isValidToppingSlice(getCurrentCoords) && pizza.isValidSizeSlice(getCurrentCoords)){
